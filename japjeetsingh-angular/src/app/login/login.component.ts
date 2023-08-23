@@ -38,14 +38,9 @@ export class LoginComponent implements OnInit{
       }
     })
   }
-<<<<<<< HEAD
   showSuccess() {
     this.toastr.success('Hello world!', 'Toastr fun!');
  }
-}
-=======
-  
-  }
+}  
 
 // admin@kizatextiles.com
->>>>>>> 76c2f77fa2541bfc7e777b31d8e8c312aeebf801
