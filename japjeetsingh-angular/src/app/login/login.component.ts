@@ -36,5 +36,5 @@ export class LoginComponent implements OnInit{z
   }
   showSuccess() {
     this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+ }
 }
