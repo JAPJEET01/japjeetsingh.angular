@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CustomerService } from '../shared/customer/customer.service';
 
 
 @Component({
@@ -14,27 +15,37 @@ export class LoginComponent implements OnInit{
     email: new FormControl("",[Validators.required,Validators.email]),
     password:  new FormControl("",[Validators.required,Validators.minLength(5)])
   })
-  constructor(private router : Router ,private toastr: ToastrService){}
+  constructor(private router : Router ,private toastr: ToastrService , private customerservice : CustomerService){}
   ngOnInit(): void {
   }
 
   submit(){
-    console.log(this.loginform.value)
-    if(this.loginform.value.email =="japjeet@gmail.com" && this.loginform.value.password=="123456" ){
-      setTimeout(() => {
-        this.toastr.success('Hello world!', 'Toastr fun!');
-      }, 4000);
-      
-    }
-    else{
-      setTimeout(() => {
-        this.toastr.error('Hello world!', 'Toastr fun!');
-      }, 4000);
-      
-    }
-    
+    this.customerservice.login(this.loginform.value).subscribe({
+      next:(res:any)=>{
+        // console.log(res.success)
+        if(res.success)
+        {
+          // this.authservice.setdata(res)
+          this.toastr.success(res.message)
+          this.router.navigateByUrl("/layout/about")
+        }
+        else{
+          this.toastr.error(res.message)
+        }
+      },
+      error:(err:any)=>{
+        this.toastr.error(err)
+      }
+    })
   }
+<<<<<<< HEAD
   showSuccess() {
     this.toastr.success('Hello world!', 'Toastr fun!');
  }
 }
+=======
+  
+  }
+
+// admin@kizatextiles.com
+>>>>>>> 76c2f77fa2541bfc7e777b31d8e8c312aeebf801

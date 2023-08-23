@@ -3,7 +3,7 @@
 
     <div class="bg-white p-8 rounded shadow-md w-96">
       <h1 class="text-2xl font-semibold mb-4">Login</h1>
-      <form [formGroup]="loginform" (click)="submit()">
+      <form [formGroup]="loginform" (submit)="submit()">
         <div class="mb-4">
           <label for="username" class="block text-sm font-medium text-gray-700">Email</label>
           <input type="text" formControlName="email"  class="mt-1 p-2 w-full border rounded">
