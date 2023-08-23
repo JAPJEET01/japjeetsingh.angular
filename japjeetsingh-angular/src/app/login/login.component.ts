@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{z
+export class LoginComponent implements OnInit{
   loginform =  new FormGroup({
     email: new FormControl("",[Validators.required,Validators.email]),
     password:  new FormControl("",[Validators.required,Validators.minLength(5)])
